@@ -3,3 +3,70 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.WordsList {
+    list-style: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+}
+
+.WordsList li {
+    counter-increment: item 1;
+    height: 1.5em;
+    line-height: 1.5em;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    padding: 4px;
+    position: relative;
+}
+
+.WordsList li .Word {
+    background-color: brown;
+    flex-grow: 1;
+    border-radius: 8px;
+    min-width: 180px;
+}
+
+.WordsList li:before {
+    content: counter(item);
+    border-radius: 100%;
+    background-color: brown;
+    color: white;
+    box-sizing: border-box;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    display: block;
+    margin-right: 0.5em;
+    z-index: 1;
+}
+
+.WordsList li:first-of-type::before {
+    /* Start list counter from 0 */
+    counter-set: item;
+}
+
+.WordsList li:first-of-type::after {
+    margin-top: 0.75em;
+}
+
+.WordsList li:last-of-type::after {
+    margin-bottom: 0.75em;
+}
+
+.WordsList li:first-of-type:last-of-type:after {
+    /* Hide lines if there is only one item in the list */
+    height: 0;
+}
+
+.WordsList li:after {
+    width: 0.75em;
+    height: 100%;
+    content: "";
+    margin-left: 0.375em;
+    background-color: brown;
+    position: absolute;
+}
